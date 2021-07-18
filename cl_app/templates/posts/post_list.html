@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+<div class='category-display'>
+{% block title %}{{category.category_name}} Posts{% endblock %}
+</div>
+
+{% block page-content %}
+<h1>{{ category.category_name}}</h1>
+<ul>
+  {% for post in posts %}
+  <div>
+    <li>{{ post.date_posted }}: <a href="{% url 'post_detail' category_id=category.id post_id=post.id %}">{{ post.post_title }}</a></li>
+  </div>
+  {% endfor %}
+</ul>
+<hr>
+<a href="{% url 'edit_category' category_id=category.id %}"><button>Edit Category</button></a>
+<a href="{% url 'delete_category' category_id=category.id %}"><button>Delete Category</button></a>
+<a href="{% url 'new_post' category_id=category.id %}"><button>New Post</button></a>
+<hr>
+<a href='{% url "category_list" %}'><button>Back</button></a>
+{% endblock %}

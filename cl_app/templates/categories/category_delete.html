@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete {{ category.category_name }}{% endblock %}
+
+{% block page-content %}
+<h1>{{category.category_name}} Delete</h1>
+<form method='post'>
+  {% csrf_token %}
+  Are you sure you want to delete "{{ category.category_name }}" ?
+  <input type='submit' value="Submit" />
+</form>
+<hr>
+<a href='{% url "category_list" %}'><button>Back</button></a>
+{% endblock %}

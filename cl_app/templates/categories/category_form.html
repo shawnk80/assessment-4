@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ type_of_request }} Category {% endblock %}
+
+{% block page-content %}
+<h2> {{type_of_request}} category </h2>
+<form method="POST">{% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+<hr>
+<a href='{% url "category_list" %}'><button>Back</button></a>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ type_of_request }} Post {% endblock %}
+
+{% block page-content %}
+<h2> {{type_of_request}} post </h2>
+<form method="POST">{% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <button type="submit">Save</button>
+</form>
+<hr>
+<a href='{% url "post_list" category_id=category.id %}'><button>Back</button></a>
+{% endblock %}
